@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Proximity</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f7fa;
+      color: #11181C;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: #0a1628;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(74,200,255,0.12);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg { width: 22px; height: 22px; }
+
+    .logo-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .header-right {
+      margin-left: auto;
+      font-size: 13px;
+      color: #4ac8ff;
+      font-weight: 500;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #0a1628 0%, #1a3050 100%);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: #a0c8e8;
+    }
+
+    /* ── TOC ── */
+    .toc-wrapper {
+      max-width: 760px;
+      margin: 32px auto 0;
+      padding: 0 16px;
+    }
+
+    .toc {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 24px 28px;
+    }
+
+    .toc h2 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #9ba1a6;
+      margin-bottom: 14px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 6px;
+    }
+
+    .toc a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #1a8fe3;
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 7px;
+      transition: background 0.15s;
+    }
+
+    .toc a:hover { background: #f0f7ff; }
+
+    .toc-num {
+      font-size: 11px;
+      font-weight: 700;
+      background: #e8f4ff;
+      color: #1a8fe3;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Content ── */
+    .content {
+      max-width: 760px;
+      margin: 32px auto 64px;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+
+    .section-header:hover { background: #fafbfc; }
+
+    .section-num {
+      width: 32px;
+      height: 32px;
+      background: #0a1628;
+      color: #4ac8ff;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #0a1628;
+      flex: 1;
+    }
+
+    .chevron {
+      width: 20px;
+      height: 20px;
+      color: #9ba1a6;
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .chevron.open { transform: rotate(180deg); }
+
+    .section-body {
+      display: none;
+      padding: 0 24px 24px;
+      border-top: 1px solid #f0f2f5;
+    }
+
+    .section-body.open { display: block; }
+
+    .section-body p {
+      font-size: 15px;
+      color: #3d4852;
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+
+    .section-body ul, .section-body ol {
+      margin-top: 12px;
+      padding-left: 20px;
+    }
+
+    .section-body li {
+      font-size: 15px;
+      color: #3d4852;
+      line-height: 1.7;
+      margin-bottom: 4px;
+    }
+
+    .section-body li strong { color: #0a1628; }
+
+    .section-body h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0a1628;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 20px;
+      margin-bottom: 6px;
+    }
+
+    .section-body a {
+      color: #1a8fe3;
+      text-decoration: none;
+    }
+
+    .section-body a:hover { text-decoration: underline; }
+
+    .highlight {
+      background: #f0f7ff;
+      border-left: 3px solid #1a8fe3;
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #3d4852;
+      line-height: 1.6;
+    }
+
+    .third-party-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f0f2f5;
+    }
+
+    .third-party-item:last-child { border-bottom: none; }
+
+    .third-party-dot {
+      width: 8px;
+      height: 8px;
+      background: #4ac8ff;
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .third-party-item p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: linear-gradient(135deg, #0a1628 0%, #1a3050 100%);
+      border-radius: 14px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    }
+
+    .contact-card p {
+      color: #a0c8e8;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      background: #4ac8ff;
+      color: #0a1628;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 11px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-btn:hover { opacity: 0.85; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px 16px 40px;
+      font-size: 13px;
+      color: #9ba1a6;
+    }
+
+    footer a { color: #1a8fe3; text-decoration: none; }
+
+    /* ── Expand all ── */
+    .controls {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: -8px;
+    }
+
+    .ctrl-btn {
+      font-size: 13px;
+      color: #1a8fe3;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+
+    .ctrl-btn:hover { background: #e8f4ff; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="10" r="3.5" stroke="#4ac8ff" stroke-width="2"/>
+        <path d="M12 2C8.5 2 5 5 5 10c0 5.25 7 12 7 12s7-6.75 7-12c0-5-3.5-8-7-8z" stroke="#4ac8ff" stroke-width="2" fill="none"/>
+        <circle cx="12" cy="10" r="6" stroke="#4ac8ff" stroke-width="1" opacity="0.4"/>
+        <circle cx="12" cy="10" r="9" stroke="#4ac8ff" stroke-width="0.7" opacity="0.2"/>
+      </svg>
+    </div>
+    <span class="logo-name">Proximity</span>
+    <span class="header-right">Privacy Policy</span>
+  </header>
+
+  <div class="hero">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: October 20, 2026</p>
+    <p style="max-width:640px;margin:14px auto 0;line-height:1.6;">Welcome to Proximity ("we," "us," or "our"). This Privacy Policy explains what information we collect, how we use and share it, and the choices you have when you use our mobile application, Proximity (the "App"). Please read it carefully. If you do not agree with it, please do not use the App.</p>
+  </div>
+
+  <div class="toc-wrapper">
+    <div class="toc">
+      <h2>Contents</h2>
+      <div class="toc-grid">
+        <a href="#s1"><span class="toc-num">1</span> Information We Collect</a>
+        <a href="#s2"><span class="toc-num">2</span> Messages and Encryption</a>
+        <a href="#s3"><span class="toc-num">3</span> How We Use Your Information</a>
+        <a href="#s4"><span class="toc-num">4</span> How We Share Your Information</a>
+        <a href="#s5"><span class="toc-num">5</span> Privacy Zones and Data on Your Phone</a>
+        <a href="#s6"><span class="toc-num">6</span> Data Retention and Deletion</a>
+        <a href="#s7"><span class="toc-num">7</span> Data Security</a>
+        <a href="#s8"><span class="toc-num">8</span> Your Rights and Choices</a>
+        <a href="#s9"><span class="toc-num">9</span> Children's Privacy</a>
+        <a href="#s10"><span class="toc-num">10</span> Third-Party Services</a>
+        <a href="#s11"><span class="toc-num">11</span> Changes to This Policy</a>
+        <a href="#s12"><span class="toc-num">12</span> Governing Law</a>
+        <a href="#s13"><span class="toc-num">13</span> Contact Us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand all</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse all</button>
+  </div>
+
+  <div class="content">
+
+    <div class="section" id="s1">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">1</div>
+        <span class="section-title">Information We Collect</span>
+        <svg class="chevron open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body open">
+        <ul>
+          <li><strong>Account information:</strong> email address, password (kept in protected form by our sign-in provider), display name, age, bio, interests, a location description you choose to write, and the profile photos you add.</li>
+          <li><strong>Verification:</strong> if you verify your profile, Stripe checks your ID and a selfie. Stripe collects those, not Proximity. We only receive the result (verified or not) and show a verified badge.</li>
+          <li><strong>Messages:</strong> your one-to-one and group messages are end-to-end encrypted (see section 2). We store the locked message, who sent it, who or which group it is for, and when.</li>
+          <li><strong>Chat activity:</strong> your conversations, group memberships and invitations, chats you have cleared, and when you last read each chat (so read receipts and unread counts work), and the disappearing-message timer set for each chat.</li>
+          <li><strong>Friends and safety:</strong> friend requests and friendships, people you block or mute, and reports you send us.</li>
+          <li><strong>Ad rewards:</strong> if you choose to watch a rewarded ad, we record that it was completed and what it earned you (the type of reward, when, and a one-time ad ID from Google), so each ad counts once and the daily limits work.</li>
+          <li><strong>Profile views:</strong> when another user views your profile, we record who and when. Premium members can see this.</li>
+          <li><strong>Last active:</strong> roughly when you last opened the App. You can choose whether others see it.</li>
+          <li><strong>Bluetooth signal:</strong> while Proximity is scanning, your phone broadcasts a short code based on the first part of your account ID so nearby Proximity phones can recognize you. A phone that picks it up asks our servers whose profile it is and shows what that person has chosen to share.</li>
+          <li><strong>Location:</strong> your phone's location is used on your phone to draw the live map, record encounters, and apply Privacy zones. We do not upload your GPS coordinates or keep a history of them on our servers.</li>
+          <li><strong>Saved on your phone only:</strong> your encounter history (including where an encounter happened), Privacy zones, and encounter settings stay on your phone. We never receive them.</li>
+          <li><strong>Support and AI help:</strong> bug reports you send, and the questions you type into the in-app help chat.</li>
+          <li><strong>Device and security information:</strong> the model name of each phone you use for secure messaging (up to five), the app version and device details in a bug report, and simple counts of recent actions (like messages sent) that we use to stop spam and abuse.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s2">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">2</div>
+        <span class="section-title">Messages and Encryption</span>
+        <svg class="chevron open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body open">
+        <ul>
+          <li>Your one-to-one and group messages are locked on your phone before they are sent, and can only be unlocked on the phones of the people in that chat. The keys that unlock them are kept on your phone, not on our servers.</li>
+          <li>Proximity cannot read your messages. We can see who messaged whom (or which group), when, and roughly how long the message is.</li>
+          <li>Messages sent before we added encryption were stored in readable form. They stay visible to you and the other people in those chats until the accounts involved are deleted.</li>
+          <li>Your key lives only on your phone. If you reinstall Proximity, clear its data, or switch phones, you get a new key and cannot read earlier messages. We cannot recover them.</li>
+          <li>People in a chat can copy, screenshot, or share what you send. Group members see messages sent after they joined.</li>
+          <li><strong>Disappearing messages:</strong> anyone in a chat can set a timer, from 5 minutes to 4 weeks. It starts when a message is sent and only applies to messages sent after the timer was set. When time runs out, the message can no longer be opened and we erase its text and its lock. We keep an empty record that a message was sent (who sent it, to whom or which group, and when) so our spam limits and replying rules keep working. A timer does not stop anyone from copying or taking a screenshot before a message disappears, and a report keeps the messages you chose to include in it.</li>
+          <li><strong>Reports:</strong> when you report a chat or a group, you choose whether to include recent messages. Only what you choose to include is sent to us, and we cannot open the locked originals to check it. If you include nothing, we only receive your report.</li>
+          <li><strong>Limits:</strong> to protect people from spam, we limit how many messages, chats, groups, invitations, and friend requests an account can send in a short time.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s3">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">3</div>
+        <span class="section-title">How We Use Your Information</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>Operate core App features including proximity detection, the live map, encounter history, messaging, group chats, and friend connections.</li>
+          <li>Show your profile to other people according to your privacy settings.</li>
+          <li>Process and manage your Premium subscription.</li>
+          <li>Count the rewards you earn from rewarded ads and apply the daily limits.</li>
+          <li>Verify profiles, if you choose to verify.</li>
+          <li><strong>Keep people safe:</strong> review reports, block spam and abuse, and enforce our Terms of Service.</li>
+          <li>Show in-app alerts about friend requests, group invitations, and new messages while the App is open. You can hide message previews under Settings &gt; Messaging Privacy.</li>
+          <li>Respond to support requests and bug reports, and answer questions in the in-app help chat.</li>
+          <li>We do not use your location or message content for advertising. We cannot read your messages.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s4">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">4</div>
+        <span class="section-title">How We Share Your Information</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li><strong>Other users:</strong> your name, photo, bio, age, interests, verified badge, location description, and when you were last active may be shown to other people. Your privacy settings control what appears.</li>
+          <li><strong>Group members:</strong> people in a group can see each other's names and photos. They see messages sent after they joined.</li>
+          <li><strong>Supabase:</strong> stores your account, profile, photos, friendships, groups, and locked messages, and runs our sign-in and server functions.</li>
+          <li><strong>Mapbox:</strong> draws the map. It receives requests for the part of the map you are viewing, which shows roughly where you are.</li>
+          <li><strong>RevenueCat, Google Play, and the Apple App Store:</strong> manage Premium subscriptions and validate purchases.</li>
+          <li><strong>Stripe:</strong> checks your ID and selfie if you choose to verify your profile.</li>
+          <li><strong>Google AdMob:</strong> shows rewarded video ads to free accounts, only when you choose to watch one. Google may collect your phone's advertising ID, IP address (which shows roughly where you are), and how you interact with the ad, to show and measure ads and prevent fraud, under Google's own privacy policy. Where the law requires it, Google asks for your consent first, and you can reset your advertising ID in your phone's settings. We do not send Google your profile, messages, or location. Premium members do not see ads.</li>
+          <li><strong>Anthropic:</strong> powers the in-app help chat. The questions you type there are sent to Anthropic's Claude model to write a reply. We do not send your profile, messages, or location.</li>
+          <li><strong>Resend:</strong> delivers the alert emails we receive when someone sends a report. They include the details in the report.</li>
+          <li><strong>Legal and safety:</strong> we may disclose data if required by law or valid legal process, or to protect someone from serious harm.</li>
+          <li>We do not sell, rent, or trade your personal information. The only advertising in the App is the rewarded video ads you choose to watch, provided by Google AdMob as described above.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s5">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">5</div>
+        <span class="section-title">Privacy Zones and Data on Your Phone</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>Your encounter history, Privacy zones, and encounter settings are saved only on your phone. They are not sent to us and are never shared with other users. When you create a Privacy zone, your device automatically pauses Bluetooth scanning and stops generating encounter events within that area. Deleting the App or clearing its data removes them for good.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s6">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">6</div>
+        <span class="section-title">Data Retention and Deletion</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>Account and profile data is kept until you delete your account.</li>
+          <li>Messages are kept until the account of the sender or the receiver is deleted. Deleting a conversation only removes it from your own view; the other person keeps their copy. Group messages stay until the sender's account is deleted or the group no longer exists.</li>
+          <li>Messages sent with a disappearing-message timer are erased when the timer runs out (usually within a minute). Only an empty record of who sent it, to whom or which group, and when is kept, until the accounts involved are deleted.</li>
+          <li>Reports, and the alert emails we receive about them, are kept for as long as we need them for safety and legal reasons.</li>
+          <li>Counts of recent actions used to stop spam are cleared on a rolling basis and contain no message content.</li>
+          <li>Records of rewarded ads (which reward, when, and Google's one-time ad ID) are deleted after 60 days, or sooner when you delete your account. What you have earned (such as assistant answers or map time) is deleted with your account.</li>
+          <li>When you delete your account in the App, we delete your profile, photos, messages, friendships, group memberships, and other account data from our systems. Copies in backups are removed within 30 days, except where the law requires us to keep something.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s7">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">7</div>
+        <span class="section-title">Data Security</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>We use encrypted data transmission (HTTPS/TLS), secure authentication, and access controls to protect your data. Your messages are also end-to-end encrypted, and the keys are kept in your phone's secure storage. Anyone who can unlock your phone can read your chats, so keep it locked. No method of electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s8">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">8</div>
+        <span class="section-title">Your Rights and Choices</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li><strong>Access and correction:</strong> view and update your profile at any time in the App.</li>
+          <li><strong>Account deletion:</strong> delete your account in the App under Settings &gt; Delete Account. If you cannot sign in, email <a href="mailto:techtrendgalaxy@gmail.com">techtrendgalaxy@gmail.com</a> and we will process your request within 30 days.</li>
+          <li><strong>Who can reach you:</strong> under Settings &gt; Messaging Privacy, choose who can message you, whether read receipts are on, and whether message previews are hidden.</li>
+          <li><strong>What others see:</strong> under Settings &gt; Profile Privacy, choose whether your age, location description, photos, and last-active time are shown.</li>
+          <li><strong>Blocking, muting, and reporting:</strong> you can block or mute anyone (see Settings &gt; Blocked &amp; Muted) and report people, chats, and groups from the App.</li>
+          <li><strong>Permissions:</strong> revoke location or Bluetooth access in your device settings at any time (this will limit App functionality).</li>
+          <li><strong>California residents:</strong> you may have additional rights under the CCPA, including the right to know what data is collected and the right to request deletion. Contact us to exercise these rights.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s9">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">9</div>
+        <span class="section-title">Children's Privacy</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>Proximity is not intended for anyone under 18. We do not knowingly collect personal information from children under 18. If you believe a child has provided us with personal data, please contact us at <a href="mailto:techtrendgalaxy@gmail.com">techtrendgalaxy@gmail.com</a> and we will delete it promptly.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s10">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">10</div>
+        <span class="section-title">Third-Party Services</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>The App uses third-party services including Supabase, Mapbox, RevenueCat, Stripe, Anthropic, Resend, and Google AdMob, as described in section 4. These providers have their own privacy policies. We are not responsible for the privacy practices of third-party websites or services linked from the App.</p>
+        <ul>
+          <li><a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">Mapbox Privacy Policy ↗</a></li>
+          <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase Privacy Policy ↗</a></li>
+          <li><a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe Privacy Policy ↗</a></li>
+          <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Privacy Policy ↗</a></li>
+          <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy ↗</a></li>
+          <li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend Privacy Policy ↗</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s11">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">11</div>
+        <span class="section-title">Changes to This Policy</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>We may update this Privacy Policy from time to time. We will notify you of material changes by updating the effective date and, where appropriate, sending a notice within the App. Continued use of the App after changes constitutes acceptance.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s12">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">12</div>
+        <span class="section-title">Governing Law</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>This Privacy Policy is governed by the laws of the State of Texas. Any disputes shall be subject to the exclusive jurisdiction of the courts located in Texas.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s13">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">13</div>
+        <span class="section-title">Contact Us</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>If you have any questions or requests regarding this Privacy Policy, please contact us at <a href="mailto:techtrendgalaxy@gmail.com">techtrendgalaxy@gmail.com</a>.</p>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <p>Questions about your privacy? We're happy to help.</p>
+      <a class="contact-btn" href="mailto:techtrendgalaxy@gmail.com?subject=Privacy%20Policy%20Inquiry">techtrendgalaxy@gmail.com</a>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 Proximity &nbsp;·&nbsp;
+    <a href="mailto:techtrendgalaxy@gmail.com">Contact</a> &nbsp;·&nbsp;
+    <a href="./delete-account.html">Delete Account</a>
+  </footer>
+
+  <script>
+    function toggle(header) {
+      const body = header.nextElementSibling;
+      const chevron = header.querySelector('.chevron');
+      const isOpen = body.classList.contains('open');
+      body.classList.toggle('open', !isOpen);
+      chevron.classList.toggle('open', !isOpen);
+    }
+
+    function setAll(open) {
+      document.querySelectorAll('.section-body').forEach(b => b.classList.toggle('open', open));
+      document.querySelectorAll('.chevron').forEach(c => c.classList.toggle('open', open));
+    }
+
+    // Smooth scroll for TOC links
+    document.querySelectorAll('.toc a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        // Open the section
+        const body = target.querySelector('.section-body');
+        const chevron = target.querySelector('.chevron');
+        if (body) { body.classList.add('open'); chevron.classList.add('open'); }
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+</html>
