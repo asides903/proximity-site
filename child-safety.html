@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Child Safety &amp; Minor Protection Policy — Proximity</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #0044EE;
+      --accent-light: #e8efff;
+      --text: #1a1a2e;
+      --text-muted: #555577;
+      --bg: #f8f9fc;
+      --card-bg: #ffffff;
+      --border: #dde2f0;
+      --green: #1a7f4b;
+      --green-bg: #eaf6f0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--accent);
+      color: #fff;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    header .app-name {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: clamp(24px, 5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    header p.subtitle {
+      font-size: 16px;
+      opacity: 0.88;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    header .updated {
+      margin-top: 20px;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Section ── */
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 36px;
+      margin-bottom: 24px;
+    }
+
+    section h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    section h2 .icon {
+      width: 30px;
+      height: 30px;
+      background: var(--accent-light);
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    section p, section li {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    section ul {
+      padding-left: 22px;
+      margin-bottom: 10px;
+    }
+    section ul li::marker {
+      color: var(--accent);
+    }
+    section p:last-child, section ul:last-child { margin-bottom: 0; }
+
+    /* ── Compliance badge row ── */
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .badge {
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid #b0dcc8;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* ── Summary bar ── */
+    .summary-bar {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .summary-bar strong { font-weight: 700; }
+
+    /* ── Contact ── */
+    .contact-box {
+      background: var(--accent-light);
+      border: 1px solid #c0d0f5;
+      border-radius: 12px;
+      padding: 24px 28px;
+      text-align: center;
+      margin-top: 8px;
+    }
+    .contact-box p { font-size: 15px; margin-bottom: 6px; }
+    .contact-box a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .contact-box a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 540px) {
+      section { padding: 24px 20px; }
+      header { padding: 40px 20px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="app-name">Proximity — Mobile App</p>
+  <h1>Child Safety &amp; Minor Protection Policy</h1>
+  <p class="subtitle">Our commitment to keeping the Proximity platform safe and fully off-limits to users under 18.</p>
+  <p class="updated">Last updated: June 2026</p>
+</header>
+
+<div class="container">
+
+  <div class="summary-bar">
+    <strong>Summary:</strong> Proximity is strictly an adults-only application (18+). We do not knowingly allow minors to register, do not collect data from anyone under 18, and have implemented multiple safeguards to enforce this. The sections below detail our compliance with applicable child safety laws and platform policies.
+    <div class="badge-row">
+      <span class="badge">✓ COPPA Compliant</span>
+      <span class="badge">✓ GDPR Article 8</span>
+      <span class="badge">✓ Google Play Policy</span>
+      <span class="badge">✓ 18+ Only</span>
+      <span class="badge">✓ No Minor Data Collected</span>
+    </div>
+  </div>
+
+  <!-- 1. Age Restriction -->
+  <section>
+    <h2><span class="icon">🔞</span> Age Restriction &amp; Eligibility</h2>
+    <p>Proximity is designed exclusively for adults aged 18 and over. Our Terms of Service explicitly prohibit any person under the age of 18 from creating an account or using the application in any capacity.</p>
+    <p>During account creation, users are required to confirm they are 18 or older. Any account found to belong to a minor is immediately suspended and all associated data is permanently deleted. We encourage users to report suspected underage accounts through the in-app reporting feature or by contacting our safety team directly.</p>
+  </section>
+
+  <!-- 2. COPPA -->
+  <section>
+    <h2><span class="icon">🇺🇸</span> COPPA — Children's Online Privacy Protection Act</h2>
+    <p>The Children's Online Privacy Protection Act (COPPA) applies to operators of websites and online services that knowingly collect personal information from children under 13 in the United States. Proximity complies with COPPA by:</p>
+    <ul>
+      <li>Not directing any service, features, or marketing to children under 13.</li>
+      <li>Not knowingly collecting, using, or disclosing personal information from any child under 13.</li>
+      <li>Immediately deleting any data if we discover it was submitted by a user under 13, including account information, profile data, and any encounter history.</li>
+      <li>Listing a minimum age requirement of 18 in our Terms of Service and app store listings, which exceeds COPPA's 13-year threshold.</li>
+    </ul>
+    <p>Because Proximity requires users to be at least 18, the service is not directed to children under 13, and no parental consent mechanisms are required or implied.</p>
+  </section>
+
+  <!-- 3. GDPR Article 8 -->
+  <section>
+    <h2><span class="icon">🇪🇺</span> GDPR Article 8 — Conditions for Child's Consent</h2>
+    <p>Article 8 of the General Data Protection Regulation (GDPR) establishes that children under 16 (or a lower age set by individual EU member states, with a floor of 13) cannot provide valid consent for data processing. Proximity addresses this requirement as follows:</p>
+    <ul>
+      <li>Our minimum age requirement of 18 exceeds the GDPR Article 8 threshold in all EU member states.</li>
+      <li>No user under 18 is permitted to create an account or provide personal data of any kind.</li>
+      <li>Our legal basis for processing adult user data is user consent and legitimate interest for delivering the proximity-detection service, as outlined in our Privacy Policy.</li>
+      <li>Users in the EU retain the right to access, correct, and delete their personal data at any time under GDPR Articles 15–17, regardless of age, by contacting our support team.</li>
+    </ul>
+  </section>
+
+  <!-- 4. Google Play Families Policy -->
+  <section>
+    <h2><span class="icon">📱</span> Google Play Families Policy &amp; App Rating</h2>
+    <p>Proximity is published on the Google Play Store and complies with Google Play's Developer Program Policies regarding apps that may be used by or around minors:</p>
+    <ul>
+      <li><strong>Target audience:</strong> Proximity targets adults aged 18 and over exclusively. It is not enrolled in Google Play's Families program and does not target children or mixed audiences.</li>
+      <li><strong>Content rating:</strong> Proximity carries a <em>Mature (17+)</em> content rating from the IARC rating system on Google Play, signaling that the app is not appropriate for children.</li>
+      <li><strong>No child-directed advertising:</strong> Proximity does not display third-party advertisements of any kind. No ad network data, including child-directed ad serving, is used.</li>
+      <li><strong>Sensitive permissions:</strong> Bluetooth and location permissions are used solely to detect nearby Bluetooth-enabled devices. No location data is stored or transmitted to Proximity's servers from these permissions.</li>
+    </ul>
+  </section>
+
+  <!-- 5. Data Practices -->
+  <section>
+    <h2><span class="icon">🔒</span> Data Practices &amp; Minor Protection</h2>
+    <p>Proximity's technical architecture is designed to minimize data collection broadly, which inherently protects against any incidental collection of minor data:</p>
+    <ul>
+      <li><strong>BLE-only proximity detection:</strong> Proximity uses Bluetooth Low Energy (BLE) scanning to detect nearby devices. This is a local, on-device process. No real-time GPS coordinates are transmitted to or stored on Proximity's servers.</li>
+      <li><strong>No persistent location storage:</strong> The app does not log, store, or share a user's GPS location. BLE signal strength is used for proximity estimation only and is not retained.</li>
+      <li><strong>Encounter logs:</strong> When two consenting adults are detected in proximity, a local encounter record may be created. This record contains only voluntarily provided profile information (name, photo, bio) that users have explicitly made visible. No encounter data is generated for or from unregistered users.</li>
+      <li><strong>Profile data:</strong> All profile information (name, age, bio, interests, photo) is voluntarily provided by registered adult users. Users may delete their profile and all associated data at any time.</li>
+      <li><strong>No data sold or shared:</strong> Proximity does not sell personal data to third parties, consistent with CCPA and similar privacy regulations.</li>
+    </ul>
+  </section>
+
+  <!-- 6. Reporting & Enforcement -->
+  <section>
+    <h2><span class="icon">🚨</span> Reporting Underage Users &amp; Enforcement</h2>
+    <p>Proximity takes reports of underage users seriously. If you believe a user of the app is under 18, you can:</p>
+    <ul>
+      <li>Use the in-app <strong>Report</strong> feature on any user's profile to flag the account for review.</li>
+      <li>Email our safety team directly (see contact information below).</li>
+    </ul>
+    <p>Upon receiving a report, we will review the account within 72 hours. If the account is confirmed to belong to a minor, it will be immediately suspended and all personal data permanently deleted in accordance with our data retention policy and applicable law.</p>
+    <p>Proxy or fraudulent registrations made on behalf of a minor by an adult are a violation of our Terms of Service and may result in permanent bans for all associated accounts.</p>
+  </section>
+
+  <!-- 7. No Sexual Content or Exploitation -->
+  <section>
+    <h2><span class="icon">🛡️</span> No CSAM or Exploitative Content</h2>
+    <p>Proximity has a zero-tolerance policy for child sexual abuse material (CSAM) or any content that sexualizes, exploits, or endangers minors. Specifically:</p>
+    <ul>
+      <li>Any content depicting or describing the sexual exploitation of minors is strictly prohibited and will be reported to the National Center for Missing &amp; Exploited Children (NCMEC) and relevant law enforcement authorities immediately.</li>
+      <li>User-generated content (profile photos, bios) is subject to review and may be removed if it violates community standards or applicable law.</li>
+      <li>Proximity does not include features intended for, or that could reasonably facilitate, contact between adults and minors.</li>
+    </ul>
+  </section>
+
+  <!-- 8. Contact -->
+  <div class="contact-box">
+    <p><strong>Questions about child safety or this policy?</strong></p>
+    <p>Contact our Safety Team at <a href="mailto:safety@proximity.app">safety@proximity.app</a></p>
+    <p style="margin-top:8px; font-size:13px; color:#555577;">We aim to respond to all safety inquiries within 48 hours.</p>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2026 Proximity. All rights reserved. &nbsp;|&nbsp;
+  <a href="./privacy-policy.html" style="color:#0044EE; text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp;
+  <a href="./terms.html" style="color:#0044EE; text-decoration:none;">Terms of Service</a>
+</footer>
+
+</body>
+</html>

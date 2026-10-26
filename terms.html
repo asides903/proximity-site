@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Proximity</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f7fa;
+      color: #11181C;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: #0a1628;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(74,200,255,0.12);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg { width: 22px; height: 22px; }
+
+    .logo-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .header-right {
+      margin-left: auto;
+      font-size: 13px;
+      color: #4ac8ff;
+      font-weight: 500;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #0a1628 0%, #1a3050 100%);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: #a0c8e8;
+    }
+
+    /* ── TOC ── */
+    .toc-wrapper {
+      max-width: 760px;
+      margin: 32px auto 0;
+      padding: 0 16px;
+    }
+
+    .toc {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 24px 28px;
+    }
+
+    .toc h2 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #9ba1a6;
+      margin-bottom: 14px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 6px;
+    }
+
+    .toc a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #1a8fe3;
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 7px;
+      transition: background 0.15s;
+    }
+
+    .toc a:hover { background: #f0f7ff; }
+
+    .toc-num {
+      font-size: 11px;
+      font-weight: 700;
+      background: #e8f4ff;
+      color: #1a8fe3;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Content ── */
+    .content {
+      max-width: 760px;
+      margin: 32px auto 64px;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+
+    .section-header:hover { background: #fafbfc; }
+
+    .section-num {
+      width: 32px;
+      height: 32px;
+      background: #0a1628;
+      color: #4ac8ff;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #0a1628;
+      flex: 1;
+    }
+
+    .chevron {
+      width: 20px;
+      height: 20px;
+      color: #9ba1a6;
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .chevron.open { transform: rotate(180deg); }
+
+    .section-body {
+      display: none;
+      padding: 0 24px 24px;
+      border-top: 1px solid #f0f2f5;
+    }
+
+    .section-body.open { display: block; }
+
+    .section-body p {
+      font-size: 15px;
+      color: #3d4852;
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+
+    .section-body ul, .section-body ol {
+      margin-top: 12px;
+      padding-left: 20px;
+    }
+
+    .section-body li {
+      font-size: 15px;
+      color: #3d4852;
+      line-height: 1.7;
+      margin-bottom: 4px;
+    }
+
+    .section-body li strong { color: #0a1628; }
+
+    .section-body h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0a1628;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 20px;
+      margin-bottom: 6px;
+    }
+
+    .section-body a {
+      color: #1a8fe3;
+      text-decoration: none;
+    }
+
+    .section-body a:hover { text-decoration: underline; }
+
+    .highlight {
+      background: #f0f7ff;
+      border-left: 3px solid #1a8fe3;
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #3d4852;
+      line-height: 1.6;
+    }
+
+    .third-party-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f0f2f5;
+    }
+
+    .third-party-item:last-child { border-bottom: none; }
+
+    .third-party-dot {
+      width: 8px;
+      height: 8px;
+      background: #4ac8ff;
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .third-party-item p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: linear-gradient(135deg, #0a1628 0%, #1a3050 100%);
+      border-radius: 14px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    }
+
+    .contact-card p {
+      color: #a0c8e8;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      background: #4ac8ff;
+      color: #0a1628;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 11px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-btn:hover { opacity: 0.85; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px 16px 40px;
+      font-size: 13px;
+      color: #9ba1a6;
+    }
+
+    footer a { color: #1a8fe3; text-decoration: none; }
+
+    /* ── Expand all ── */
+    .controls {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: -8px;
+    }
+
+    .ctrl-btn {
+      font-size: 13px;
+      color: #1a8fe3;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+
+    .ctrl-btn:hover { background: #e8f4ff; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="10" r="3.5" stroke="#4ac8ff" stroke-width="2"/>
+        <path d="M12 2C8.5 2 5 5 5 10c0 5.25 7 12 7 12s7-6.75 7-12c0-5-3.5-8-7-8z" stroke="#4ac8ff" stroke-width="2" fill="none"/>
+        <circle cx="12" cy="10" r="6" stroke="#4ac8ff" stroke-width="1" opacity="0.4"/>
+        <circle cx="12" cy="10" r="9" stroke="#4ac8ff" stroke-width="0.7" opacity="0.2"/>
+      </svg>
+    </div>
+    <span class="logo-name">Proximity</span>
+    <span class="header-right">Terms of Service</span>
+  </header>
+
+  <div class="hero">
+    <h1>Terms of Service</h1>
+    <p>Effective October 20, 2026</p>
+    <p style="max-width:640px;margin:14px auto 0;line-height:1.6;">Please read these Terms of Service carefully before using Proximity. By using the App, you agree to be bound by these Terms.</p>
+  </div>
+
+  <div class="toc-wrapper">
+    <div class="toc">
+      <h2>Contents</h2>
+      <div class="toc-grid">
+        <a href="#s1"><span class="toc-num">1</span> Acceptance of Terms</a>
+        <a href="#s2"><span class="toc-num">2</span> Description of the App</a>
+        <a href="#s3"><span class="toc-num">3</span> Account Registration and Security</a>
+        <a href="#s4"><span class="toc-num">4</span> Bluetooth and Location Data</a>
+        <a href="#s5"><span class="toc-num">5</span> Messaging and Group Chats</a>
+        <a href="#s6"><span class="toc-num">6</span> User Conduct</a>
+        <a href="#s7"><span class="toc-num">7</span> Reporting and Safety</a>
+        <a href="#s8"><span class="toc-num">8</span> Premium Subscriptions and Billing</a>
+        <a href="#s9"><span class="toc-num">9</span> AI Help</a>
+        <a href="#s10"><span class="toc-num">10</span> Intellectual Property</a>
+        <a href="#s11"><span class="toc-num">11</span> Privacy</a>
+        <a href="#s12"><span class="toc-num">12</span> Disclaimers and Limitation of Liability</a>
+        <a href="#s13"><span class="toc-num">13</span> Indemnification</a>
+        <a href="#s14"><span class="toc-num">14</span> Governing Law</a>
+        <a href="#s15"><span class="toc-num">15</span> Changes to These Terms</a>
+        <a href="#s16"><span class="toc-num">16</span> Termination</a>
+        <a href="#s17"><span class="toc-num">17</span> Miscellaneous</a>
+        <a href="#s18"><span class="toc-num">18</span> Contact Us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl-btn" onclick="setAll(true)">Expand all</button>
+    <button class="ctrl-btn" onclick="setAll(false)">Collapse all</button>
+  </div>
+
+  <div class="content">
+
+    <div class="section" id="s1">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">1</div>
+        <span class="section-title">Acceptance of Terms</span>
+        <svg class="chevron open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body open">
+        <p>These Terms constitute a legally binding agreement between you and Proximity. By creating an account or using any feature of the App, you represent that you are at least 18 years of age, have the legal capacity to enter into a binding agreement, and will comply with these Terms and all applicable laws and regulations.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s2">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">2</div>
+        <span class="section-title">Description of the App</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>Proximity is a social discovery application that uses Bluetooth Low Energy (BLE) technology and location data to help users discover and connect with people nearby. Features include a live map showing nearby users, encounter history, friend requests, one-to-one and group messaging, blocking and reporting tools, Privacy zones that pause scanning, an in-app help chat, and Premium subscription features.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s3">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">3</div>
+        <span class="section-title">Account Registration and Security</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>You must create an account using a valid email address and password. You agree to provide accurate, current, and complete information. You are solely responsible for maintaining the confidentiality of your credentials, for keeping your phone secure, and for all activity under your account. You may not create more than one account. Accounts are non-transferable.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s4">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">4</div>
+        <span class="section-title">Bluetooth and Location Data</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>The App requires access to your device's Bluetooth and location services. Your location is used on your phone to draw the live map, record encounters, and apply Privacy zones.</li>
+          <li>While scanning is on, your phone broadcasts a short code tied to your account so that nearby Proximity users' phones can recognize you.</li>
+          <li>You may designate Privacy zones where Bluetooth scanning is automatically paused. You are responsible for configuring your own Privacy zones.</li>
+          <li>Proximity does not upload or store your GPS coordinates on its servers, and does not sell location data. Your encounter history and Privacy zones are saved on your phone only.</li>
+          <li>You may revoke location or Bluetooth permissions at any time through your device settings. Doing so will limit or disable core App functionality.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s5">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">5</div>
+        <span class="section-title">Messaging and Group Chats</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>Your one-to-one and group messages are end-to-end encrypted. Only the people in a chat can read what is said in it. Proximity cannot read your messages and does not review them in advance.</li>
+          <li>Your encryption key is kept on your phone. If you reinstall the App, clear its data, or switch phones, you will not be able to read earlier messages, and we cannot recover them.</li>
+          <li>You choose who can message you, and you can block, mute, or report anyone at any time. Group members see messages sent after they joined.</li>
+          <li>To limit spam, we cap how many messages, chats, groups, invitations, and friend requests an account can send in a short time. You agree not to try to get around these limits.</li>
+          <li>You are responsible for what you send. Anyone in a chat can copy, screenshot, or share it.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s6">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">6</div>
+        <span class="section-title">User Conduct</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>You agree not to harass, stalk, threaten, or intimidate any other user.</li>
+          <li>You agree not to collect or store personal data about other users without their consent, and not to share another person's private messages or photos to embarrass or harass them.</li>
+          <li>You agree not to impersonate any person or entity.</li>
+          <li>You agree not to transmit any content that is unlawful, harmful, obscene, or defamatory, or send sexual content to anyone who has not asked for it.</li>
+          <li>You agree not to send spam, bulk or repeated unwanted messages, or invitations.</li>
+          <li>You agree not to attempt to reverse-engineer, decompile, or derive the source code of the App, or to interfere with its safety features or limits.</li>
+          <li>You agree not to use the App for commercial solicitation or unauthorized advertising.</li>
+          <li>We reserve the right to suspend or terminate your account for violations without notice.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s7">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">7</div>
+        <span class="section-title">Reporting and Safety</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>You can report a profile, a chat, a group, or a message from inside the App. When you report a chat or group, you decide whether to include recent messages. We can only act on what you send us, because we cannot read encrypted messages.</li>
+          <li>We review reports and may remove content, limit features, suspend, or terminate accounts. We may keep information about a report as needed for safety and legal reasons.</li>
+          <li>Do not submit false or abusive reports.</li>
+          <li>Proximity is not an emergency service. If you or someone else is in danger, contact your local emergency number.</li>
+          <li>Use caution when meeting anyone in person. Choose public places and tell someone you trust where you are going.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s8">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">8</div>
+        <span class="section-title">Premium Subscriptions and Billing</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>Proximity offers a free tier with limited map access (up to 5 opens per day after an initial free trial). Free accounts can send a limited number of messages in each conversation and cannot send messages in group chats.</li>
+          <li>Free accounts can also choose to watch rewarded video ads to earn extra live map time, extra messages in a chat, and answers from the in-app help chat. Rewards are small, are counted by our servers, have daily limits, have no cash value, cannot be transferred, and we may change or end them at any time. Using a modified app, automated tools, or fake ad views to claim rewards is not allowed and may lead to your account being restricted. Premium members do not see ads.</li>
+          <li>Proximity Premium is available at $4.99/month or $29.99/year and includes unlimited map access, messaging, group chat messages, profile views, full encounter history, verified badges, the AI help chat, and multiple Privacy zones. Friends are free for all users.</li>
+          <li>Subscriptions are billed through the Google Play Store or Apple App Store and automatically renew unless cancelled at least 24 hours before the end of the current period.</li>
+          <li>Refunds are subject to the refund policies of the applicable app store. Proximity does not independently issue refunds except as required by law.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s9">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">9</div>
+        <span class="section-title">AI Help</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>The in-app help chat is available to Premium subscribers, and to free accounts for each answer earned by watching a rewarded ad. It uses an automated AI model to answer questions about the App. Its answers can be wrong and are not professional, legal, medical, or safety advice. Do not share sensitive personal information in it. Questions you type are sent to our AI provider, as described in the Privacy Policy, and use is limited per account.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s10">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">10</div>
+        <span class="section-title">Intellectual Property</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>All content, features, and functionality of the App are the exclusive property of Proximity and are protected by applicable intellectual property laws. You are granted a limited, non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes. You retain ownership of content you submit but grant Proximity a license to use it solely for operating and improving the App.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s11">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">11</div>
+        <span class="section-title">Privacy</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>Your use of the App is also governed by our Privacy Policy, which is incorporated into these Terms by reference. By using the App, you consent to the collection and use of information as described in the Privacy Policy.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s12">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">12</div>
+        <span class="section-title">Disclaimers and Limitation of Liability</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.</li>
+          <li>TO THE MAXIMUM EXTENT PERMITTED BY LAW, PROXIMITY SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE APP.</li>
+          <li>Profiles and messages are created by users. Proximity does not review them in advance and does not conduct background checks on users. You are solely responsible for your interactions with other users.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s13">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">13</div>
+        <span class="section-title">Indemnification</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>You agree to defend, indemnify, and hold harmless Proximity and its affiliates, officers, and agents from any claims, liabilities, damages, losses, and expenses arising out of your use of the App, your violation of these Terms, or your violation of any rights of another person or entity.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s14">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">14</div>
+        <span class="section-title">Governing Law</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>These Terms are governed by the laws of the State of Texas. Any disputes shall be resolved exclusively in the state or federal courts located in Texas. Before filing any legal claim, you agree to contact us and attempt to resolve the dispute informally within 30 days.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s15">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">15</div>
+        <span class="section-title">Changes to These Terms</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>We reserve the right to modify these Terms at any time. We will notify you of material changes by updating the effective date and, where appropriate, by sending a notice within the App. Your continued use of the App after changes become effective constitutes your acceptance.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s16">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">16</div>
+        <span class="section-title">Termination</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>You can stop using Proximity and delete your account at any time in the App under Settings &gt; Delete Account. We may suspend or terminate your access at any time with or without cause. Upon termination, your right to use the App will immediately cease. Provisions that by their nature should survive termination shall survive.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s17">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">17</div>
+        <span class="section-title">Miscellaneous</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>Entire Agreement: These Terms and our Privacy Policy constitute the entire agreement between you and Proximity.</li>
+          <li>Severability: If any provision is found unenforceable, the remaining provisions continue in full force.</li>
+          <li>Waiver: Our failure to enforce any right is not a waiver of that right.</li>
+          <li>Assignment: You may not assign these Terms or your account without our prior written consent.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section" id="s18">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num">18</div>
+        <span class="section-title">Contact Us</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="section-body">
+        <p>If you have any questions about these Terms, please contact us at <a href="mailto:techtrendgalaxy@gmail.com">techtrendgalaxy@gmail.com</a>.</p>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <p>Questions about these Terms? We're happy to help.</p>
+      <a class="contact-btn" href="mailto:techtrendgalaxy@gmail.com?subject=Terms%20of%20Service%20Inquiry">techtrendgalaxy@gmail.com</a>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 Proximity &nbsp;·&nbsp;
+    <a href="mailto:techtrendgalaxy@gmail.com">Contact</a> &nbsp;·&nbsp;
+    <a href="./privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="./delete-account.html">Delete Account</a>
+  </footer>
+
+  <script>
+    function toggle(header) {
+      const body = header.nextElementSibling;
+      const chevron = header.querySelector('.chevron');
+      const isOpen = body.classList.contains('open');
+      body.classList.toggle('open', !isOpen);
+      chevron.classList.toggle('open', !isOpen);
+    }
+
+    function setAll(open) {
+      document.querySelectorAll('.section-body').forEach(b => b.classList.toggle('open', open));
+      document.querySelectorAll('.chevron').forEach(c => c.classList.toggle('open', open));
+    }
+
+    // Smooth scroll for TOC links
+    document.querySelectorAll('.toc a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        // Open the section
+        const body = target.querySelector('.section-body');
+        const chevron = target.querySelector('.chevron');
+        if (body) { body.classList.add('open'); chevron.classList.add('open'); }
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+</html>
